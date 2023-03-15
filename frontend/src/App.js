@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import react, {useState, useEffect} from 'react'
+import axios from 'axios';
+import data from './data.json'
 
 function App() {
+  const [dataFetch, setDataFeatch] = useState(data)
+
+ 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      {dataFetch.map((data, i) => {
+        return(
+          <div key={i}>
+            <h2>{data.title}</h2>
+            <p>{data.content}</p>
+          </div>
+        )
+      })}
     </div>
   );
 }
-
 export default App;
